@@ -20,6 +20,60 @@
 - `ls -a` — Include hidden files.
 - `ls -lt` — Sort by modification time.
 
+## `less` — View File Content with Advanced Navigation
+- **Purpose**: View file content one screen at a time with more advanced navigation than `more`.
+- **Common Options**:
+    - `-N`: Show line numbers.
+    - `-S`: Do not wrap long lines.
+    - `-X`: Disable terminal clearing after exiting.
+    - `-f`: Force opening non-regular files (e.g., directories, devices).
+- **Navigation**:
+    - `Space`: Move forward one screen.
+    - `b`: Move backward one screen.
+    - `/pattern`: Search forward for `pattern`.
+    - `?pattern`: Search backward for `pattern`.
+    - `n`: Repeat the last search forward.
+    - `N`: Repeat the last search backward.
+    - `q`: Quit `less`.
+    - `j` or `up arrow`: Move one line up.
+    - `k` or `down arrow`: Move one line down.
+- **Examples**:
+    - `less file.txt` — View `file.txt` with advanced navigation.
+    - `cat largefile.txt | less` — Pipe output of `cat` to `less` for paginated viewing.
+    - `less -N log.txt` — View `log.txt` with line numbers.
+
+## `more` — View File Content One Screen at a Time
+- **Purpose**: Display file content one screen at a time, useful for large files.
+- **Common Options**:
+    - `-d`: Display a message instead of a beep when an error occurs.
+    - `-f`: Count logical lines instead of screen lines (useful for long lines).
+    - `-p`: Clear the screen before displaying the next page.
+    - `-c`: Do not scroll; instead, repaint the screen from the top.
+- **Examples**:
+    - `more file.txt` — View `file.txt` one screen at a time.
+    - `cat largefile.txt | more` — Pipe output of `cat` to `more` for paginated viewing.
+
+## `tail` — View the End of a File
+- **Purpose**: Display the last few lines of a file.
+- **Common Options**:
+    - `-n [number]`: Specify the number of lines to display (default is 10).
+    - `-f`: Follow the file as it grows (useful for logs).
+    - `-c [number]`: Display the last specified number of bytes.
+- **Examples**:
+    - `tail file.txt` — Show the last 10 lines of `file.txt`.
+    - `tail -n 20 file.txt` — Show the last 20 lines of `file.txt`.
+    - `tail -f log.txt` — Continuously display new lines added to `log.txt`.
+
+## `head` — View the Beginning of a File
+- **Purpose**: Display the first few lines of a file.
+- **Common Options**:
+    - `-n [number]`: Specify the number of lines to display (default is 10).
+    - `-c [number]`: Display the first specified number of bytes.
+- **Examples**:
+    - `head file.txt` — Show the first 10 lines of `file.txt`.
+    - `head -n 5 file.txt` — Show the first 5 lines of `file.txt`.
+    - `head -c 100 file.txt` — Show the first 100 bytes of `file.txt`.
+
 ## Locate file
 ### 1. `find` Command
 - Scans the filesystem in real-time. Highly configurable.
@@ -67,7 +121,6 @@
 7. File Name (`filename.txt`): The actual name of the file or directory.
 
 ## Create, copy, move, rename and delete files and directories
-
 ### 1. `touch` — Create Empty Files or Update Timestamps
 - **Purpose**: Create an empty file or update the access/modification time of an existing file.
 - **Common Options**:
@@ -112,6 +165,15 @@
 - **Examples**:
     - `rm file.txt` — Remove `file.txt`.
     - `rm -r old_folder` — Recursively remove `old_folder` and its contents.
+
+### 6. `rmdir` — Remove Empty Directories
+- **Purpose**: Delete empty directories.
+- **Common Options**:
+    - `--ignore-fail-on-non-empty`: Ignore errors for non-empty directories.
+    - `-p`: Remove parent directories if they become empty after removing the target directory.
+- **Examples**:
+    - `rmdir empty_folder` — Removes the directory `empty_folder` if it is empty.
+    - `rmdir -p nested/empty/folder` — Removes `nested/empty/folder` and its parent directories if they are empty.
 
 ## `file` — Determine File Type
 - **Purpose**: Identify the type of a file (e.g., text, binary, directory).
